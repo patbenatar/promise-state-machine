@@ -1,0 +1,32 @@
+{
+  "globals": {
+    "expect": true
+  },
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "ecmaFeatures": {
+    "blockBindings": true,
+    "forOf": true,
+    "jsx": true
+  },
+  "rules": {
+    "indent": [2, 2],
+    "semi": [2, "always"],
+    "quotes": [2, "single"],
+    "eqeqeq": [2, "smart"],
+    "no-mixed-requires": [0, false],
+    "eol-last": 2,
+    "func-style": [3, "expression"],
+    "no-trailing-spaces": 2,
+    "no-multiple-empty-lines": [2, {"max": 1}],
+    "no-mixed-spaces-and-tabs": [2, false],
+    "strict": [2, "global"],
+    "no-spaced-func": 2,
+    "space-in-parens": [2, "never"],
+    "camelcase": 1,
+    "no-underscore-dangle": 0,
+    "max-len": [2, 80, 4]
+  }
+}
