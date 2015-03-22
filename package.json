@@ -1,13 +1,33 @@
 {
   "name": "promise-state-machine",
+  "description": "An event-driven finite state machine backed by Promises",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "keywords": [
+    "state machine",
+    "finite state machine",
+    "state machines",
+    "promise state machine",
+    "async state machine",
+    "promise",
+    "promises",
+    "async",
+    "deferred"
+  ],
+  "homepage": "https://github.com/patbenatar/promise-state-machine",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/patbenatar/promise-state-machine.git"
+  },
+  "author": {
+    "name": "Nick Giancola",
+    "email": "nick@gophilosophie.com",
+    "url": "https://github.com/patbenatar"
+  },
+  "license": "MIT",
+  "main": "./lib/promise_state_machine.js",
   "scripts": {
     "test": "grunt test"
   },
-  "author": "Nick Giancola",
-  "license": "ISC",
   "dependencies": {
     "bluebird": "^2.9.14",
     "underscore": "^1.8.2"
