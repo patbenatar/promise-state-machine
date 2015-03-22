@@ -3,12 +3,12 @@
 ```javascript
 var fsm = new PromiseStateMachine({
   initial: 'green',
-  events: [
-    { name: 'warn', from: 'green', to: 'yellow' },
-    { name: 'panic', from: 'yellow', to: 'red' },
-    { name: 'calm', from: 'red', to: 'yellow' },
-    { name: 'clear', from: 'yellow', to: 'green' }
-  ]
+  events: {
+    warn: { from: 'green', to: 'yellow' },
+    panic: { from: 'yellow', to: 'red' },
+    calm: { from: 'red', to: 'yellow' },
+    clear: { from: 'yellow', to: 'green' }
+  }
 });
 
 fsm.on('warn', function(event, from, to, anyArgs) {
