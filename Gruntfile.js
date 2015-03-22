@@ -3,9 +3,7 @@
 module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
-  require('grunt-config-dir')(grunt, {
-    configDir: require('path').resolve('tasks')
-  });
+  require('grunt-config-dir')(grunt);
 
   // Register group tasks
   grunt.registerTask('test', ['mochacli']);
