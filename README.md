@@ -35,7 +35,7 @@ fsm.warn(transaction, somethingElse).then(function(results) {
 
 fsm.is('green'); // => false
 fsm.is('yellow'); // => true
-fsm.state; // => 'yellow'
+fsm.state(); // => 'yellow'
 fsm.can('calm'); // => false
 fsm.can('panic'); // => true
 ```
