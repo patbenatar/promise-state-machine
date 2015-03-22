@@ -3,10 +3,6 @@
 var _ = require('underscore');
 
 module.exports = function mochacli(grunt) {
-  // Load task
-  grunt.loadNpmTasks('grunt-mocha-cli');
-
-  // Options
   var options = {
     src: ['test/boot.js', 'test/**/*_test.js'],
     options: {

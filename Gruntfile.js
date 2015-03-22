@@ -1,6 +1,8 @@
 'use strict';
 
 module.exports = function(grunt) {
+  require('load-grunt-tasks')(grunt);
+
   require('grunt-config-dir')(grunt, {
     configDir: require('path').resolve('tasks')
   });
