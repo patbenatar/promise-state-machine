@@ -1,5 +1,8 @@
 # Promise State Machine
 
+[![npm version](https://badge.fury.io/js/promise-state-machine.svg)](http://badge.fury.io/js/promise-state-machine)
+[![Code Climate](https://codeclimate.com/github/patbenatar/promise-state-machine/badges/gpa.svg)](https://codeclimate.com/github/patbenatar/promise-state-machine)
+
 ```javascript
 var fsm = new PromiseStateMachine({
   initial: 'green',
