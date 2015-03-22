@@ -162,4 +162,33 @@ describe('PromiseStateMachine', function() {
       expect(fsm.can('pend')).to.equal(false);
     });
   });
+
+  describe('extending an existing object', function() {
+    it('works just fine when extended into existing object', function(done) {
+      var MyObject = function() {
+        PromiseStateMachine.call(this, {
+          initial: 'green',
+          events: {
+            warn: { from: 'green', to: 'yellow' },
+            panic: { from: 'yellow', to: 'red' },
+            calm: { from: 'red', to: 'yellow' },
+            clear: { from: 'yellow', to: 'green' }
+          }
+        });
+      };
+
+      _.extend(MyObject, PromiseStateMachine);
+      _.extend(MyObject.prototype, PromiseStateMachine.prototype);
+
+      var fsm = new MyObject();
+
+      expect(MyObject.Promise).to.equal(PromiseStateMachine.Promise);
+      expect(fsm.is('green')).to.equal(true);
+
+      fsm.warn().then(function() {
+        expect(fsm.is('green')).to.equal(false);
+        done();
+      }).catch(done);
+    });
+  });
 });

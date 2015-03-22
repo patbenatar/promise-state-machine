@@ -39,3 +39,28 @@ fsm.state(); // => 'yellow'
 fsm.can('calm'); // => false
 fsm.can('panic'); // => true
 ```
+
+## Extending an existing object
+
+```javascript
+var MyObject = function() {
+  PromiseStateMachine.call(this, {
+    initial: 'green',
+    events: {
+      warn: { from: 'green', to: 'yellow' },
+      panic: { from: 'yellow', to: 'red' },
+      calm: { from: 'red', to: 'yellow' },
+      clear: { from: 'yellow', to: 'green' }
+    }
+  });
+};
+
+_.extend(MyObject, PromiseStateMachine);
+_.extend(MyObject.prototype, PromiseStateMachine.prototype);
+
+var fsm = new MyObject();
+fsm.is('green'); // => true
+fsm.warn().then(function() {
+  fsm.is('green'); // => false
+});
+```
