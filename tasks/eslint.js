@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = function eslint(grunt) {
-  var task = {
+module.exports = function eslint() {
+  var options = {
     target: [
       'lib',
       'test',
@@ -11,5 +11,5 @@ module.exports = function eslint(grunt) {
     ]
   };
 
-  return task;
+  return options;
 };

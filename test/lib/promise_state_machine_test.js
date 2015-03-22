@@ -28,9 +28,9 @@ describe('PromiseStateMachine', function() {
     it('builds functions for each event action', function() {
       var fsm = buildFsm();
 
-      expect(_.isFunction(fsm.approve)).to.be.true;
-      expect(_.isFunction(fsm.reject)).to.be.true;
-      expect(_.isFunction(fsm.pend)).to.be.true;
+      expect(_.isFunction(fsm.approve)).to.equal(true);
+      expect(_.isFunction(fsm.reject)).to.equal(true);
+      expect(_.isFunction(fsm.pend)).to.equal(true);
     });
   });
 
@@ -38,13 +38,13 @@ describe('PromiseStateMachine', function() {
     it('calls bound event handlers', function(done) {
       var fsm = buildFsm();
 
-      var handler = function() { return Promise.resolve() };
+      var handler = function() { return Promise.resolve(); };
       handler = sinon.spy(handler);
 
       fsm.on('approve', handler);
 
       fsm.approve().then(function() {
-        expect(handler.calledOnce).to.be.true;
+        expect(handler.calledOnce).to.equal(true);
         done();
       }).catch(done);
     });
@@ -52,8 +52,8 @@ describe('PromiseStateMachine', function() {
     it('resolves with the results of the handlers in order', function(done) {
       var fsm = buildFsm();
 
-      var firstHandler = function() { return Promise.resolve('first') };
-      var secondHandler = function() { return Promise.resolve('second') };
+      var firstHandler = function() { return Promise.resolve('first'); };
+      var secondHandler = function() { return Promise.resolve('second'); };
 
       fsm.on('approve', firstHandler);
       fsm.on('approve', secondHandler);
@@ -68,13 +68,14 @@ describe('PromiseStateMachine', function() {
     it('passes event info through to the handlers', function(done) {
       var fsm = buildFsm();
 
-      var handler = function() { return Promise.resolve() };
+      var handler = function() { return Promise.resolve(); };
       handler = sinon.spy(handler);
 
       fsm.on('approve', handler);
 
       fsm.approve().then(function() {
-        expect(handler.calledWith('approve', 'pending', 'approved')).to.be.true;
+        expect(handler.calledWith('approve', 'pending', 'approved'))
+          .to.equal(true);
         done();
       }).catch(done);
     });
@@ -82,7 +83,7 @@ describe('PromiseStateMachine', function() {
     it('passes arguments through to the handlers', function(done) {
       var fsm = buildFsm();
 
-      var handler = function() { return Promise.resolve() };
+      var handler = function() { return Promise.resolve(); };
       handler = sinon.spy(handler);
 
       fsm.on('approve', handler);
@@ -92,7 +93,7 @@ describe('PromiseStateMachine', function() {
           handler.calledWith(
             'approve', 'pending', 'approved', ['first arg', 'second arg']
           )
-        ).to.be.true;
+        ).to.equal(true);
         done();
       }).catch(done);
     });
@@ -101,7 +102,7 @@ describe('PromiseStateMachine', function() {
       var fsm = buildFsm();
 
       fsm.approve().then(function() {
-        expect(fsm.is('approved')).to.be.true;
+        expect(fsm.is('approved')).to.equal(true);
         done();
       }).catch(done);
     });
@@ -128,12 +129,12 @@ describe('PromiseStateMachine', function() {
   describe('#is', function() {
     it('is true if given state is the current state', function() {
       var fsm = buildFsm();
-      expect(fsm.is('pending')).to.be.true;
+      expect(fsm.is('pending')).to.equal(true);
     });
 
     it('is false if given state is not the current state', function() {
       var fsm = buildFsm();
-      expect(fsm.is('approved')).to.be.false;
+      expect(fsm.is('approved')).to.equal(false);
     });
   });
 
@@ -153,12 +154,12 @@ describe('PromiseStateMachine', function() {
   describe('#can', function() {
     it('is true if the given event is accessible', function() {
       var fsm = buildFsm();
-      expect(fsm.can('approve')).to.be.true;
+      expect(fsm.can('approve')).to.equal(true);
     });
 
     it('is false if the given event is not accessible', function() {
       var fsm = buildFsm();
-      expect(fsm.can('pend')).to.be.false;
+      expect(fsm.can('pend')).to.equal(false);
     });
   });
 });

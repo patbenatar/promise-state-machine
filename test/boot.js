@@ -1,7 +1,6 @@
 'use strict';
 
-var chai = require('chai'),
-    _ = require('underscore');
+var chai = require('chai');
 
 chai.use(require('chai-fuzzy'));
 
