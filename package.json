@@ -1,7 +1,7 @@
 {
   "name": "promise-state-machine",
   "description": "An event-driven finite state machine backed by Promises",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": [
     "state machine",
     "finite state machine",
