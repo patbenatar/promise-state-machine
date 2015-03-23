@@ -9,9 +9,9 @@ var fsm = new PromiseStateMachine({
   initial: 'green',
   events: {
     warn: { from: 'green', to: 'yellow' },
-    panic: { from: 'yellow', to: 'red' },
+    panic: { from: ['green', 'yellow'], to: 'red' },
     calm: { from: 'red', to: 'yellow' },
-    clear: { from: 'yellow', to: 'green' }
+    clear: { from: ['yellow', 'red'], to: 'green' }
   }
 });
 
